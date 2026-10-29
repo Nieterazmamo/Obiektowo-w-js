@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>walidacja</title>
+</head>
+<body>
+    
+    <form id="myForm">
+        <label for="login">login:</label>
+        <input type="text" id="login" name="login" required>
+        <br><br>
+        <label for="haslo">haslo:</label>
+        <input type="password" id="haslo" name="haslo" required>
+        <br><br>
+
+        <button onclick="Dodaj()" type="button">Submit
+
+    </form>
+    
+    <script>
+
+        class Uzytkownik {
+            constructor(login, haslo) {
+
+                this.login = login;
+                this.haslo = haslo;
+
+            }
+
+        }
+
+        
+        let uzytkownicy = []
+
+        function Dodaj() {
+
+            let login = document.getElementById("login").value
+            let haslo = document.getElementById("haslo").value
+
+
+            if (haslo.length >= 8 && /[a-zA-Z]/.test(haslo) && /\d/.test(haslo)) {
+            
+            uzytkownicy.push(new Uzytkownik(login, haslo))
+            console.log("Dodano nowego użytkownika!", uzytkownicy);
+
+            } else {
+
+                alert("Hasło musi posiadać co najmniej 8 znaków oraz składać się z conajmniej jednej cyfry i litery")
+
+            }
+            
+        }
+
+    </script>
+
+</body>
+</html>
